@@ -1,16 +1,12 @@
-// setInterval(function () {
-//     console.log('interval');
-//     fetch(`http://localhost:3000/score?url=https://m.cricbuzz.com/cricket-commentary/52610/sll-vs-rsal-10th-match-road-safety-world-series-t20-2022`)
-//         .then(res => res.json())
-//         .then(data => {
-//             console.log(data);
-//         })
-// }, 10000);
-// fetch.Header.Set("Access-Control-Allow-Origin", "*")
-fetch(`http://localhost:3000/score?url=https://m.cricbuzz.com/cricket-commentary/52610/sll-vs-rsal-10th-match-road-safety-world-series-t20-2022`,{
-    'Access-Control-Allow-Origin': '*'
-  })
+setInterval(getResult, 5000);
+let gameUrl = 'https://m.cricbuzz.com/cricket-commentary/52610/sll-vs-rsal-10th-match-road-safety-world-series-t20-2022';
+getResult();
+async function getResult() {
+    await fetch(`http://localhost:3000/score?url=${gameUrl}`)
         .then(res => res.json())
-        .then(data => {
+        .then((data) => {
             console.log(data);
+            // document.getElementById('bowling').innerHTML = bowlTeam;
+            // document.getElementById('batting').innerHTML = current;
         })
+}
